@@ -4,7 +4,8 @@
   "description": "Very simple utility for storing GZIP-compressed JSON into files... (as silent as possible)",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "lint": "eslint --fix ."
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,8 @@
   "homepage": "https://github.com/emfol/gzipjson#readme",
   "devDependencies": {
     "jest": "25.5.4",
+    "eslint": "6.8.0",
+    "eslint-plugin-jest": "23.20.0",
     "log4js": "6.3.0"
   },
   "dependencies": {

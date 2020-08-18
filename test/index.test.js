@@ -5,7 +5,7 @@ const util = require('util');
 const log4js = require('log4js');
 const gzipjson = require('../index.js');
 
-log4js.configure(require('./log4js.json'))
+log4js.configure(require('./log4js.json'));
 
 const unlink = util.promisify(fs.unlink);
 const writeFile = util.promisify(fs.writeFile);
@@ -32,7 +32,7 @@ describe('GzipJson', () => {
         await writeFile(filepath, Buffer.alloc(0));
         const buffer = await gzipjson(example, filepath);
         expect(buffer.toString('base64')).toBe('H4sIAAAAAAAAA6vmUlBQSlSyAhIEgBJXLQDriw8sLQAAAA==');
-        const read = await readFile(filepath)
+        const read = await readFile(filepath);
         expect(read.length).toBe(0);
         await unlink(filepath);
     });

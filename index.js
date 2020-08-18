@@ -21,7 +21,7 @@ async function gzipjson(data, filepath) {
         const uncompressed = dataToJsonBuffer(data);
         const compressed = await gzip(uncompressed);
         const written = typeof filepath === 'string' ? await attemptBufferStorage(filepath, compressed) : 0;
-        print(uncompressed.length, compressed.length, written, filepath)
+        print(uncompressed.length, compressed.length, written, filepath);
         return compressed;
     } catch (error) {
         logger.debug('Oops! %s', error.message);
@@ -34,7 +34,7 @@ async function gzipjson(data, filepath) {
  */
 
 function print(uncompressed, compressed, written, path) {
-    const message = 'Compression in bytes: %d -> %d'
+    const message = 'Compression in bytes: %d -> %d';
     if (written > 0) {
         logger.debug(message + ' (%d written to "%s")', uncompressed, compressed, written, path);
     } else {
@@ -50,7 +50,7 @@ async function gzip(inBuf) {
             return;
         }
         resolve(outBuf);
-    })
+    });
     return await promise;
 }
 
@@ -73,7 +73,7 @@ async function attemptBufferStorage(filepath, buffer) {
         }
         fs.write(fd, buffer, function (ewrite, written) {
             if (ewrite) {
-                logger.debug('Error writing buffer to target file: %s', ewrite.code)
+                logger.debug('Error writing buffer to target file: %s', ewrite.code);
                 resolve(0);
                 return;
             }
